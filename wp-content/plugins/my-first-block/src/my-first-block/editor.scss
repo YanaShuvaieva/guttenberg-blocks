@@ -1,9 +1,17 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.service-card-editor {
+	padding: 15px;
+	background: #f9f9f9;
+	border: 1px dashed #ccc;
+}
 
-.wp-block-create-block-my-first-block {
-	border: 1px dotted #f00;
+.service-card-editor img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-bottom: 10px;
+	max-height: 250px;
+}
+
+.components-button {
+	height: auto;
 }

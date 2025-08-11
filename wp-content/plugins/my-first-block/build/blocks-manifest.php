@@ -2,24 +2,28 @@
 // This file is generated. Do not modify it manually.
 return array(
 	'my-first-block' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'create-block/my-first-block',
-		'version' => '0.1.0',
-		'title' => 'My First Block',
+		'name' => 'my-first-block/service-card',
+		'title' => 'Карточка услуги',
 		'category' => 'widgets',
-		'icon' => 'smiley',
-		'description' => 'Example block scaffolded with Create Block tool.',
-		'example' => array(
-			
+		'icon' => 'id',
+		'description' => 'Карточка с картинкой, заголовком и описанием.',
+		'attributes' => array(
+			'title' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'description' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			)
 		),
-		'supports' => array(
-			'html' => false
-		),
-		'textdomain' => 'my-first-block',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'style' => 'file:./style-index.css'
 	)
 );

@@ -1,19 +1,25 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/my-first-block",
-  "version": "0.1.0",
-  "title": "My First Block",
+  "name": "my-first-block/service-card",
+  "title": "Карточка услуги",
   "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
-  "example": {},
-  "supports": {
-    "html": false
+  "icon": "id",
+  "description": "Карточка с картинкой, заголовком и описанием.",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    }
   },
-  "textdomain": "my-first-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "style": "file:./style-index.css"
 }

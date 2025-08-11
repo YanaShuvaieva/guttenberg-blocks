@@ -1,41 +1,40 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+import { useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { TextControl, TextareaControl, Button } from '@wordpress/components';
 import './editor.scss';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const { title, description, imageUrl } = attributes;
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'My First Block – hello from the editor!',
-				'my-first-block'
-			) }
-		</p>
+		<div {...useBlockProps()} className="service-card-editor">
+			<MediaUploadCheck>
+				<MediaUpload
+					onSelect={(media) => setAttributes({ imageUrl: media.url })}
+					allowedTypes={['image']}
+					render={({ open }) => (
+						<Button onClick={open} variant="secondary">
+							{imageUrl ? (
+								<img src={imageUrl} alt="" style={{ maxWidth: '100%' }} />
+							) : (
+								__('Загрузить изображение', 'my-first-block')
+							)}
+						</Button>
+					)}
+				/>
+			</MediaUploadCheck>
+
+			<TextControl
+				label={__('Заголовок', 'my-first-block')}
+				value={title}
+				onChange={(value) => setAttributes({ title: value })}
+			/>
+
+			<TextareaControl
+				label={__('Описание', 'my-first-block')}
+				value={description}
+				onChange={(value) => setAttributes({ description: value })}
+			/>
+		</div>
 	);
 }

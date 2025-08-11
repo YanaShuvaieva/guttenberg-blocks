@@ -1,12 +1,23 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.service-card {
+	border: 1px solid #eee;
+	padding: 15px;
+	text-align: center;
+}
 
-.wp-block-create-block-my-first-block {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.service-card img {
+	height: 250px;
+	margin-bottom: 10px;
+	max-width: 100%;
+	width: auto;
+	object-fit: cover;
+}
+
+.service-card h3 {
+	margin: 0 0 10px;
+	font-size: 1.2em;
+}
+
+.service-card p {
+	color: #555;
+	font-size: 0.95em;
 }
