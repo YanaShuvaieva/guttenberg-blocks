@@ -24,6 +24,19 @@ return array(
 		),
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css'
+		'style' => 'file:./style-index.css',
+		'supports' => array(
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'__experimentalFontFamily' => true,
+				'fontWeight' => true,
+				'__experimentalTextTransform' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true
+			)
+		)
 	)
 );

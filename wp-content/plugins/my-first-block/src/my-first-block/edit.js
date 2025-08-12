@@ -1,13 +1,14 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { TextControl, TextareaControl, Button } from '@wordpress/components';
+import { useBlockProps, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
 	const { title, description, imageUrl } = attributes;
+	const blockProps = useBlockProps();
 
 	return (
-		<div {...useBlockProps()} className="service-card-editor">
+		<div {...blockProps} className="service-card-editor">
 			<MediaUploadCheck>
 				<MediaUpload
 					onSelect={(media) => setAttributes({ imageUrl: media.url })}
@@ -24,16 +25,20 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 			</MediaUploadCheck>
 
-			<TextControl
-				label={__('Заголовок', 'my-first-block')}
+			<RichText
+				tagName="h2"
 				value={title}
 				onChange={(value) => setAttributes({ title: value })}
+				placeholder={__('Введите заголовок...', 'my-first-block')}
+				allowedFormats={['core/bold', 'core/italic']}
 			/>
 
-			<TextareaControl
-				label={__('Описание', 'my-first-block')}
+			<RichText
+				tagName="p"
 				value={description}
 				onChange={(value) => setAttributes({ description: value })}
+				placeholder={__('Введите описание...', 'my-first-block')}
+				allowedFormats={['core/bold', 'core/italic']}
 			/>
 		</div>
 	);
